@@ -1,0 +1,41 @@
+import { faker } from '@faker-js/faker';
+
+const data = [
+    { image: require('../../assets/product1.jpeg') },
+    { image: require('../../assets/product2.jpeg') },
+    { image: require('../../assets/product3.jpeg') },
+    { image: require('../../assets/product4.jpeg') },
+    { image: require('../../assets/product5.jpeg') },
+    { image: require('../../assets/product6.jpeg') },
+    { image: require('../../assets/product7.jpeg') },
+    { image: require('../../assets/product8.jpeg') },
+    { image: require('../../assets/product9.jpeg') },
+    { image: require('../../assets/product10.jpeg') },
+    { image: require('../../assets/product11.jpeg') },
+    { image: require('../../assets/product12.jpeg') },
+    { image: require('../../assets/product13.jpeg') },
+    { image: require('../../assets/product14.jpeg') },
+    { image: require('../../assets/product15.jpeg') },
+    { image: require('../../assets/product16.jpeg') },
+    { image: require('../../assets/product17.jpeg') },
+    { image: require('../../assets/product18.jpeg') },
+    { image: require('../../assets/product19.jpeg') },
+    { image: require('../../assets/product20.jpeg') },
+    { image: require('../../assets/product21.jpeg') },
+    { image: require('../../assets/product22.jpeg') },
+    { image: require('../../assets/product23.jpeg') },
+    { image: require('../../assets/product24.jpeg') },
+    { image: require('../../assets/product25.jpeg') },
+    { image: require('../../assets/product26.jpeg') },
+    { image: require('../../assets/product27.jpeg') },
+    { image: require('../../assets/product28.jpeg') },
+    { image: require('../../assets/product29.jpeg') },
+    { image: require('../../assets/product30.jpeg') },
+];
+
+export default data.map((item, idx) => ({
+    id: idx,
+    image: item.image,
+    name: faker.commerce.productName(),
+    description: faker.commerce.productDescription(),
+}));;
