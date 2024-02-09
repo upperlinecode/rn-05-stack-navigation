@@ -1,12 +1,11 @@
 import { View, Text, Button, StyleSheet } from 'react-native';
 
 const ConfirmationModalScreen = ({ navigation, route }) => {
-    const onPress = () => navigation.goBack();
 
     return (
         <View style={styles.content}>
             <Text style={styles.text}>{route.params.name} added to cart!</Text>
-            <Button color="blue" onPress={onPress} title="Go back" />
+            <Button color="blue" title="Go back" />
         </View>
     );
 };

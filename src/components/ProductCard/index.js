@@ -1,13 +1,8 @@
 import { Pressable, Image, Text, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
-const ProductCard = ({ product, onPress }) => {
-    const handlePress = () => {
-        onPress(product);
-    };
-
+const ProductCard = ({ product }) => {
     return (
-        <Pressable onPress={handlePress} style={styles.container}>
+        <Pressable style={styles.container}>
             <Text style={styles.title}>{product.name}</Text>
             <Text style={styles.text}>{product.price}</Text>
             <Image source={product.image} style={styles.image} />

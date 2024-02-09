@@ -2,13 +2,12 @@ import { useContext } from 'react';
 import { View, Text, Image, Button, StyleSheet } from 'react-native';
 import CartContext from '../../components/CartContext';
 
-const DetailsScreen = ({ navigation, route }) => {
+const DetailsScreen = () => {
     const { cart, setCart } = useContext(CartContext);
-    const product = route.params;
+    const product = {};
 
     const onPress = () => {
         setCart([...cart, product]);
-        navigation.navigate('Confirmation', { name: product.name })
     };
 
     return (

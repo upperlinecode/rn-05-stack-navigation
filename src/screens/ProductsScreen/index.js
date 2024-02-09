@@ -4,16 +4,12 @@ import { v4 as uuidv4 } from 'uuid';
 import ProductCard from '../../components/ProductCard';
 import data from '../../data';
 
-const ProductsScreen = ({ navigation }) => {
-    const handleCardPress = (product) => {
-        navigation.navigate('Details', product);
-    };
-
+const ProductsScreen = () => {
     return (
         <ScrollView>
             <View style={styles.container}>
                 {data.map(product => (
-                    <ProductCard key={uuidv4()} product={product} onPress={handleCardPress} />
+                    <ProductCard key={uuidv4()} product={product} />
                 ))}
             </View>
         </ScrollView>
