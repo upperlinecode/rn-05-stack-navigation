@@ -1,10 +1,9 @@
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-const ConfirmationModalScreen = ({ navigation, route }) => {
-
+const ConfirmationModalScreen = () => {
     return (
         <View style={styles.content}>
-            <Text style={styles.text}>{route.params.name} added to cart!</Text>
+            <Text style={styles.text}>Add your text here!</Text>
             <Button color="blue" title="Go back" />
         </View>
     );
