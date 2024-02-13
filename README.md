@@ -24,7 +24,15 @@ We're building a simple shopping app that shows a products page. Clicking on a p
 
 ## Exercises
 
-### A. Implement stack navigation
+### A. Install React Navigation and its dependencies
+
+1. First, install React Navigation by running `npm install @react-navigation/native`.
+
+2. Because this is an Expo-managed project, we'll use Expo to install the necessary peer dependencies: `npx expo install react-native-screens react-native-safe-area-context`. (In a bare React Native project, we can install these dependencies using `npm install`.)
+
+3. Lastly, install React Navigation's stack library: `npm install @react-navigation/native-stack`.
+
+### B. Implement stack navigation
 
 1. Import the `NavigationContainer` from `@react-navigation/native`. This is a named export.
 
@@ -90,7 +98,7 @@ return (
 
 6. Run the app. You should be able to see the `ProductsScreen`. But how can you get to the details? Without tab navigation, we don't have handy tabs to click through the app, meaning that we'll have to handle the navigation ourselves. We'll tackle that in the next section!
 
-### B. Using the `navigation` prop
+### C. Using the `navigation` prop
 
 1. On a web app, you'd use anchor (`<a>`) tags to navigate. This tag would push the route to the top of the browser's history stack. We can use [React Navigation's navigation prop](https://reactnavigation.org/docs/navigating) to navigate to a new screen in a similar manner. By calling `navigation.navigate` and providing it with the name of a screen, you're be able to navigate to a new screen. This `navigation` prop is provided to every screen component. To use the `navigation` object in a component that isn't a screen, use the `useNavigation` hook.
 
@@ -123,7 +131,7 @@ const ProductCard = ({ product }) => {
 </details>
 <br>
 
-### C. Using the `route` prop
+### D. Using the `route` prop
 
 1. The `route` prop contains information about the current route. Like the `navigation` prop, `route` is passed as a prop to screen components. For other components, you can use the `useRoute` hook to access the `route` object. [Check out the React Navigation docs for more info.](https://reactnavigation.org/docs/route-prop)
 
@@ -156,7 +164,7 @@ const DetailsScreen = ({ route }) => {
 </details>
 <br>
 
-### D. Creating and navigating to modals
+### E. Creating and navigating to modals
 
 1. React Navigation also lets us create and navigate to modals. React Navigation handles all of the animations and opening/closing for us. All we have to do is provide the components! [See the docs for more info.](https://reactnavigation.org/docs/modal)
 
@@ -225,7 +233,7 @@ const ConfirmationModalScreen = ({ route }) => {
 </details>
 <br>
 
-### E. Going back
+### F. Going back
 
 1. The `navigation` prop includes other handy methods for navigating our app! Let's use one such method to close the confirmation modal. In the `ConfirmationModalScreen`, use the `navigation` prop to create an `onPress` function that calls its `goBack` method. This will cause the app to move back in its history stack. Pass this function to the `onPress` prop of the `Button` component in the `ConfirmationModalScreen`.
 
@@ -247,7 +255,7 @@ const ConfirmationModalScreen = ({ navigation, route }) => {
 </details>
 <br>
 
-### F. Customizing the header
+### G. Customizing the header
 
 1. By default, the header will display the screen's name--a little boring and uninformative for the user. Fortunately, the header can be customized at the `Navigator`, `Group`, or `Screen` levels, with each level offering more granularity. Right now, let's customize the `Details` and `Confirmation` screen. [Check out the docs for more info.](https://reactnavigation.org/docs/headers)
 
@@ -278,7 +286,7 @@ const ConfirmationModalScreen = ({ navigation, route }) => {
 </details>
 <br>
 
-### G. Extra Challenges
+### H. Extra Challenges
 
 **Mild**
 - The header's back button can be customized as well! [Check out the docs for more info.](https://reactnavigation.org/docs/native-stack-navigator#headerbacktitle) Try customizing the back button.
