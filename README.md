@@ -72,7 +72,7 @@ export default function App() {
 </details>
 <br>
 
-4. Like the `createBottomTabNavigator` function from the previous React Navigation lab, `createNativeStackNavigator` returns an object with `Navigator` and `Screen` components. The `Navigator` component creates the stack navigator. The `Screen` component creates the individual screens in your app. You can have as many `Screen` components as needed, but only one `Navigator`, and the `Navigator` must wrap all of the `Screen` components. (Later, we'll use a new `Group` component to group our screens together.)
+4. Like the `createBottomTabNavigator` function from the previous React Navigation lab, `createNativeStackNavigator` returns an object with `Navigator` and `Screen` components. The `Navigator` component creates the stack navigator. The `Screen` component creates the individual screens in your app. You can have as many `Screen` components as needed. (Later, we'll use a new `Group` component to group our screens together.)
 
 5. Add the `Stack.Navigator` and `Stack.Screen` components as children of the `NavigationContainer`. Add a `Stack.Screen` with a `name` prop of `Products` and pass the `ProductsScreen` component as its `component` prop. Do the same for the `DetailsScreen` and name it `Details`. [Check out the docs for more information.](https://reactnavigation.org/docs/hello-react-navigation#creating-a-native-stack-navigator)
 
