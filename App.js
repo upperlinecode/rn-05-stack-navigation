@@ -5,7 +5,6 @@ import ProductsScreen from './src/screens/ProductsScreen';
 import DetailsScreen from './src/screens/DetailsScreen';
 import ConfirmationModalScreen from './src/screens/ConfirmationModalScreen';
 import CartContext from './src/components/CartContext';
-import CartButton from './src/components/CartButton';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,9 +15,7 @@ export default function App() {
     <CartContext.Provider value={{ cart, setCart }}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Group screenOptions={{
-            headerRight: () => <CartButton />,
-          }}>
+          <Stack.Group>
             <Stack.Screen name="Products" component={ProductsScreen} />
             <Stack.Screen name="Details" component={DetailsScreen} options={({ route }) => ({ title: route.params.name })} />
           </Stack.Group>

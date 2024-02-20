@@ -20,8 +20,6 @@ This is a standard React Native project. If you haven't already, follow the [Exp
 
 We're building a simple shopping app that shows a products page. Clicking on a product will take users to a details page, where they'll be able to select `Add to Cart`. Selecting this button opens up a confirmation modal.
 
-> Note: While most of our other labs use TypeScript, we chose to use JavaScript for this lab. Providing types to routes can be tricky. Because TypeScript is not the focus of this lab, we chose to omit it. Please refer to the [React Navigation type checking docs](https://reactnavigation.org/docs/typescript) for more information on using TypeScript with React Navigation.
-
 ## Exercises
 
 ### A. Install React Navigation and its dependencies
