@@ -34,7 +34,7 @@ We're building a simple shopping app that shows a products page. Clicking on a p
 
 ### B. Implement stack navigation
 
-1. Import the `NavigationContainer` from `@react-navigation/native`. This is a named export.
+1. In `App.js`, import the `NavigationContainer` from `@react-navigation/native`. This is a named export.
 
 2. It's necessary to wrap your app in the `NavigationContainer` component in order for React Navigation to work. In `App.js`, add the `NavigationContainer` within the `CartContext.Provider` component.
 
@@ -102,11 +102,9 @@ return (
 
 1. On a web app, you'd use anchor (`<a>`) tags to navigate. This tag would push the route to the top of the browser's history stack. We can use [React Navigation's navigation prop](https://reactnavigation.org/docs/navigating) to navigate to a new screen in a similar manner. By calling `navigation.navigate` and providing it with the name of a screen, you're be able to navigate to a new screen. This `navigation` prop is provided to every screen component. To use the `navigation` object in a component that isn't a screen, use the `useNavigation` hook.
 
-2. In `ProductsScreen`, note the structure of the component. We'll need to either write a navigation function and pass it down to the `ProductCard`, where the user's touch is detected, or in the `ProductCard` directly. Write a function in either component that calls `navigation.navigate`. In `ProductsScreen`, the `navigation` object will be passed down as a prop from the `Stack.Screen` component. In `ProductCard`, you'll need to import `{ useNavigation }` from `@react-navigation/native`. Pass the function you write to the `onPress` prop of the `Pressable` component in `ProductCard`, to be called whenever the `ProductCard` is tapped.
+2. We want to navigate to the details when we click the `ProductCard`, so we'll need to give the `Pressable` component in `ProductCard` an `onPress` handler. In `ProductCard`, write a function that calls `navigation.navigate`. You'll need to import `{ useNavigation }` from `@react-navigation/native`. The `navigation.navigate` method takes two arguments: the name of the screen being navigated to and parameters to pass to the screen. Pass the screen name `'Details'` and the object `product` to the `navigation.navigate` function. (This will be the same `product` passed to each `ProductCard`.) Pass the function you write to the `onPress` prop of the `Pressable` component.
 
-3. The `navigation.navigate` method takes two arguments: the name of the screen being navigated to and parameters to pass to the screen. Pass the screen name `'Details'` and the object `product` to the `navigate.navigate` function. (This will be the same `product` passed to each `ProductCard`.)
-
-4. In the app, click on a product card. You can successfully navigate to the `Details` page! But you can't see any details. In the next step, we'll learn how to pull out the route's parameters!
+3. In the app, click on a product card. You can successfully navigate to the `Details` page! But you can't see any details. In the next step, we'll learn how to pull out the route's parameters!
 
 <details>
 <summary>Click here for an example answer</summary>
@@ -137,7 +135,7 @@ const ProductCard = ({ product }) => {
 
 2. In the `DetailsScreen`, destructure `route` from the props passed to the component. Assign the `product` variable the value of `route.params`.
 
-3. You can now see the product details!
+3. Click through multiple products. You can now see the product details!
 
 <details>
 <summary>Click here for the coded answer</summary>
@@ -174,7 +172,7 @@ const DetailsScreen = ({ route }) => {
 
 3. Create a separate `Stack.Group` component. `Stack.Group` can take a `screenOptions` prop, allowing for a wide range of customization. For this particular `Stack.Group`, pass `screenOptions` an object with a key of `presentation` and a value of `'modal'`. This tells React Navigation that the screens inside this group should present as modals.
 
-4. Import the `ConfirmationModalScreen` from `./src/screens/ConfirmationModalScreen`. Within your second `Stack.Group`, add a `Stack.Screen` named `Confirmation` and give it `ConfirmationModalScreen` as its `component` prop. 
+4. Within your second `Stack.Group`, add a `Stack.Screen` named `Confirmation` and give it `ConfirmationModalScreen` as its `component` prop. 
 
 5. In the `DetailsScreen` component, destructure the `{ navigation }` prop. In the existing `onPress` function, navigate to the `Confirmation` screen and pass it the `product`. (Keep the existing code in the function.)
 
@@ -261,9 +259,9 @@ const ConfirmationModalScreen = ({ navigation, route }) => {
 
 1. By default, the header will display the screen's name--a little boring and uninformative for the user. Fortunately, the header can be customized at the `Navigator`, `Group`, or `Screen` levels, with each level offering more granularity. Right now, let's customize the `Details` and `Confirmation` screens. [Check out the docs for more info.](https://reactnavigation.org/docs/headers)
 
-2. The `options` prop can either take an object or a function that receives the `route` as its argument and returns an object. In the `Confirmation` modal, provide an object with a `title` key and a value of `Thank you!`.
+2. The `options` prop can either take an object or a function that receives the `route` as its argument and returns an object. Provide the confirmation `Stack.Screen` an `options` prop. Its value should be an object with a `title` key and a value of `Thank you!`.
 
-3. In the `Details` screen, pass a function to the `options` prop. This function will receive an object with the `route` as its argument. Return an object with the key `title` and the product's name.
+3. Pass the details `Stack.Screen` a function to its `options` prop. This function will receive an object with the `route` as its argument. Return an object with the key `title` and the product's name. (Remember how params are passed around in routes!)
 
 <details>
 <summary>Click here for the coded answer</summary>
