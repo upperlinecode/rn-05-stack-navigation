@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import ProductsScreen from './src/screens/ProductsScreen';
 import DetailsScreen from './src/screens/DetailsScreen';
 import ConfirmationModalScreen from './src/screens/ConfirmationModalScreen';
@@ -8,7 +9,15 @@ export default function App() {
   const [cart, setCart] = useState([]);
 
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
-    </CartContext.Provider>
+    <SafeAreaView style={styles.safeAreaView}>
+      <CartContext.Provider value={{ cart, setCart }}>
+      </CartContext.Provider>
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1,
+  },
+});
