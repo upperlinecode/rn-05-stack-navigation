@@ -170,11 +170,11 @@ const DetailsScreen = ({ route }) => {
 
 2. When the `Add to Cart` button in the `DetailsScreen` is clicked, we want to navigate to a confirmation modal confirming that the item was added to the user's cart. First, though, we need to add the modal. Back in `App.js`, we'll need to use the `Group` component included in `Stack` to separate out our screens. `Group` gives us a little more granular control. Wrap the `Stack.Screen` components for `Products` and `Details` in a `Stack.Group` component.
 
-3. Create a separate `Stack.Group` component. `Stack.Group` can take a `screenOptions` prop, allowing for a wide range of customization. For this particular `Stack.Group`, pass `screenOptions` an object with a key of `presentation` and a value of `'modal'`. This tells React Navigation that the screens inside this group should present as modals.
+3. Create a separate `Stack.Group` as a child of the `Stack.Navigator`. `Stack.Group` can take a `screenOptions` prop, allowing for a wide range of customization. For this particular `Stack.Group`, pass `screenOptions` an object with a key of `presentation` and a value of `'modal'`. This tells React Navigation that the screens inside this group should present as modals.
 
 4. Within your second `Stack.Group`, add a `Stack.Screen` named `Confirmation` and give it `ConfirmationModalScreen` as its `component` prop. 
 
-5. In the `DetailsScreen` component, destructure the `{ navigation }` prop. In the existing `onPress` function, navigate to the `Confirmation` screen and pass it the `product`. (Keep the existing code in the function.)
+5. In the `DetailsScreen` component, destructure the `navigation` prop. In the existing `onPress` function, navigate to the `Confirmation` screen using `navigation.navigate` and pass it the `product`. (Keep the existing code in the function.)
 
 6. In the `ConfirmationModalScreen`, use the `route` prop to say `<product name> added to cart!`. (Remember what parameters we're passing to the screen!)
 
@@ -199,7 +199,7 @@ const DetailsScreen = ({ route }) => {
   );
 ```
 ```js
-const DetailsScreen = ({ navigation }) => {
+const DetailsScreen = ({ route, navigation }) => {
     const { cart, setCart } = useContext(CartContext);
     const product = route.params;
 
@@ -259,7 +259,7 @@ const ConfirmationModalScreen = ({ navigation, route }) => {
 
 1. By default, the header will display the screen's name--a little boring and uninformative for the user. Fortunately, the header can be customized at the `Navigator`, `Group`, or `Screen` levels, with each level offering more granularity. Right now, let's customize the `Details` and `Confirmation` screens. [Check out the docs for more info.](https://reactnavigation.org/docs/headers)
 
-2. The `options` prop can either take an object or a function that receives the `route` as its argument and returns an object. Provide the confirmation `Stack.Screen` an `options` prop. Its value should be an object with a `title` key and a value of `Thank you!`.
+2. The `options` prop can either take an object or a function that receives the `route` as its argument and returns an object. In `App.js`, provide the confirmation `Stack.Screen` an `options` prop. Its value should be an object with a `title` key and a value of `Thank you!`.
 
 3. Pass the details `Stack.Screen` a function to its `options` prop. This function will receive an object with the `route` as its argument. Return an object with the key `title` and the product's name. (Remember how params are passed around in routes!)
 
